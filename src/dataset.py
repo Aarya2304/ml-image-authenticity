@@ -4,7 +4,10 @@ from torch.utils.data import DataLoader
 
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
-    transforms.ToTensor()
+    transforms.RandomHorizontalFlip(),
+    transforms.RandomRotation(10),
+    transforms.ToTensor(),
+    transforms.Normalize([0.5]*3, [0.5]*3)
 ])
 
 data_path = "data/real_and_fake_face"

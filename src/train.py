@@ -29,5 +29,9 @@ for epoch in range(epochs):
         optimizer.step()
 
         running_loss += loss.item()
+    avg_loss = running_loss / len(dataloader)
+    print(f"Epoch {epoch+1}, Loss: {avg_loss:.4f}")
 
-    print(f"Epoch {epoch+1}, Loss: {running_loss:.4f}")
+
+torch.save(model.state_dict(), "models/model.pth")
+print("Model saved!")
